@@ -13,7 +13,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -36,12 +38,13 @@ public class Repository {
 
     public List<Costumer> getCostumers() throws SQLException {
         List<Costumer> costumers = new ArrayList<>();
-
+        Map<Integer, Costumer> cm = new HashMap<>();
         ResultSet rs = stmt.executeQuery("select * from costumer");
 
         while (rs.next()) {
             Costumer tempCostumer = new Costumer(rs.getInt("id"), rs.getString("name"));
             costumers.add(tempCostumer);
+            cm.put(tempCostumer.getId(), tempCostumer);
 
         }
 

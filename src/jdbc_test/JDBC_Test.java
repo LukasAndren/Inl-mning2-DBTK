@@ -237,7 +237,7 @@ public class JDBC_Test extends JFrame implements ActionListener {
         newOrder.setText("Ny beställning");
         newOrder.addActionListener(e -> {
             try {
-                r.callAddToCartNewOrder(activeCostumer.getId(), 0, chosenShoe.getId());
+                r.callAddToCart(activeCostumer.getId(), 0, chosenShoe.getId());
                 System.out.println("En ny beställning har lagts till för " + activeCostumer.getName());
                 printToFile(activeCostumer, chosenShoe);
             } catch (SQLException ex) {
